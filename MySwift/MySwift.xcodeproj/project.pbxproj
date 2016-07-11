@@ -14,6 +14,11 @@
 		E08E70B91D333FAB0027860D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08E70B71D333FAB0027860D /* LaunchScreen.storyboard */; };
 		E08E70C41D333FAB0027860D /* MySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E70C31D333FAB0027860D /* MySwiftTests.swift */; };
 		E08E70CF1D333FAB0027860D /* MySwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E70CE1D333FAB0027860D /* MySwiftUITests.swift */; };
+		E08E70DF1D33473C0027860D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E70DE1D33473C0027860D /* TableViewCell.swift */; };
+		E08E70E11D3347F40027860D /* TableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E08E70E01D3347F40027860D /* TableviewCell.xib */; };
+		E08E70E51D3362940027860D /* UIView+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = E08E70E41D3362940027860D /* UIView+Quick.m */; };
+		E08E70E81D3362D30027860D /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = E08E70E71D3362D30027860D /* UIColor+Hex.m */; };
+		E08E70EA1D33757B0027860D /* GoodsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E70E91D33757B0027860D /* GoodsInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,14 @@
 		E08E70CA1D333FAB0027860D /* MySwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08E70CE1D333FAB0027860D /* MySwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySwiftUITests.swift; sourceTree = "<group>"; };
 		E08E70D01D333FAB0027860D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E08E70DE1D33473C0027860D /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		E08E70E01D3347F40027860D /* TableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableviewCell.xib; sourceTree = "<group>"; };
+		E08E70E21D3362930027860D /* MySwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MySwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		E08E70E31D3362940027860D /* UIView+Quick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Quick.h"; sourceTree = "<group>"; };
+		E08E70E41D3362940027860D /* UIView+Quick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Quick.m"; sourceTree = "<group>"; };
+		E08E70E61D3362D30027860D /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		E08E70E71D3362D30027860D /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		E08E70E91D33757B0027860D /* GoodsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +110,20 @@
 		E08E70AD1D333FAB0027860D /* MySwift */ = {
 			isa = PBXGroup;
 			children = (
+				E08E70E31D3362940027860D /* UIView+Quick.h */,
+				E08E70E41D3362940027860D /* UIView+Quick.m */,
+				E08E70E61D3362D30027860D /* UIColor+Hex.h */,
+				E08E70E71D3362D30027860D /* UIColor+Hex.m */,
 				E08E70AE1D333FAB0027860D /* AppDelegate.swift */,
 				E08E70B01D333FAB0027860D /* ViewController.swift */,
+				E08E70DE1D33473C0027860D /* TableViewCell.swift */,
+				E08E70E91D33757B0027860D /* GoodsInfo.swift */,
+				E08E70E01D3347F40027860D /* TableviewCell.xib */,
 				E08E70B21D333FAB0027860D /* Main.storyboard */,
 				E08E70B51D333FAB0027860D /* Assets.xcassets */,
 				E08E70B71D333FAB0027860D /* LaunchScreen.storyboard */,
 				E08E70BA1D333FAB0027860D /* Info.plist */,
+				E08E70E21D3362930027860D /* MySwift-Bridging-Header.h */,
 			);
 			path = MySwift;
 			sourceTree = "<group>";
@@ -230,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E08E70B91D333FAB0027860D /* LaunchScreen.storyboard in Resources */,
+				E08E70E11D3347F40027860D /* TableviewCell.xib in Resources */,
 				E08E70B61D333FAB0027860D /* Assets.xcassets in Resources */,
 				E08E70B41D333FAB0027860D /* Main.storyboard in Resources */,
 			);
@@ -256,7 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08E70DF1D33473C0027860D /* TableViewCell.swift in Sources */,
+				E08E70E81D3362D30027860D /* UIColor+Hex.m in Sources */,
 				E08E70B11D333FAB0027860D /* ViewController.swift in Sources */,
+				E08E70E51D3362940027860D /* UIView+Quick.m in Sources */,
+				E08E70EA1D33757B0027860D /* GoodsInfo.swift in Sources */,
 				E08E70AF1D333FAB0027860D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +425,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zhoufeng.MySwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MySwift/MySwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -410,10 +439,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zhoufeng.MySwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MySwift/MySwift-Bridging-Header.h";
 			};
 			name = Release;
 		};
