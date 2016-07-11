@@ -1,15 +1,15 @@
 //
-//  swiftTests.swift
-//  swiftTests
+//  MySwiftTests.swift
+//  MySwiftTests
 //
 //  Created by 周峰 on 16/7/11.
 //  Copyright © 2016年 zhoufeng. All rights reserved.
 //
 
 import XCTest
-@testable import swift
+@testable import MySwift
 
-class swiftTests: XCTestCase {
+class MySwiftTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
