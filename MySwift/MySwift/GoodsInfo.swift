@@ -14,8 +14,8 @@ class GoodsInfo: NSObject {
     var goodsName:String?
     var goodsStyle:String?
     var goodsPrice:String?
-    var selectState:Bool?
-    var goodsCount:String?
+    var selectState:NSNumber?
+    var goodsCount:NSNumber?
     
     init(dict: [String: AnyObject]) {
         super.init()

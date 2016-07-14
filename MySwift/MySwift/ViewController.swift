@@ -10,90 +10,143 @@ import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    var _tableView: UITableView!
-    var _bottomView: UIView!
-    var _selectAll: UIButton!
-    var _price: UILabel!
-    var _submit: UIButton!
-    var _infoArray: NSMutableArray!
-    var _priceNum: CGFloat!
-    
+    var tableView: UITableView!
+    var bottomView: UIView!
+    var selectAll: UIButton!
+    var price: UILabel!
+    var submit: UIButton!
+    var infoArray: NSMutableArray!
+    var priceNum: Float!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        _priceNum = 0
-        _infoArray = NSMutableArray()
+        priceNum = 0
+        infoArray = NSMutableArray()
         for _ in 0..<10 {
             var infoDict = [String:AnyObject]()
             infoDict["goodsName"] = "CHANEL/香奈儿破包"
             infoDict["goodsPrice"] = "200000"
-            infoDict["selectState"] = NSNumber(bool: false)
-            infoDict["goodsCount"] = "1"
-            infoDict["goodsStyle"] = "类型：配饰"
+            infoDict["selectState"] = NSNumber(int: 0)
+            infoDict["goodsCount"] = NSNumber(int: 1)
+            infoDict["goodsStyle"] = "类型：凤姐同款"
             
             let goodsInfo = GoodsInfo(dict: infoDict)
-            _infoArray.addObject(goodsInfo)
+            infoArray.addObject(goodsInfo)
         }
         
-        _tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Plain)
-        _tableView?.delegate = self
-        _tableView?.dataSource = self
-        view.addSubview(_tableView!)
+        tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Plain)
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        view.addSubview(tableView)
         
         view.backgroundColor = UIColor(hexString: "ededed")
         
-        _bottomView = UIView()
-        _bottomView.backgroundColor = UIColor.whiteColor()
-        view.addSubview(_bottomView)
+        bottomView = UIView()
+        bottomView.backgroundColor = UIColor.whiteColor()
+        view.addSubview(bottomView)
         
-        _selectAll = UIButton(type: UIButtonType.Custom)
-        _selectAll.setImage(UIImage(named: "icon_cancelDefaul"), forState: UIControlState.Normal)
-        _selectAll.setTitle("   全 选", forState: UIControlState.Normal)
-        _selectAll.titleLabel?.font = UIFont.systemFontOfSize(15)
-        _selectAll.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        _bottomView.addSubview(_selectAll)
+        selectAll = UIButton(type: UIButtonType.Custom)
+        selectAll.setImage(UIImage(named: "icon_cancelDefaul"), forState: UIControlState.Normal)
+        selectAll.setImage(UIImage(named: "icon_cancelSelect"), forState: UIControlState.Selected)
+        selectAll.setTitle("   全 选", forState: UIControlState.Normal)
+        selectAll.titleLabel?.font = UIFont.systemFontOfSize(15)
+        selectAll.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        selectAll.addTarget(self, action: #selector(ViewController.selectAllClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        bottomView.addSubview(selectAll)
         
-        _price = UILabel()
-        _price.font = UIFont.systemFontOfSize(15)
-        _price.textColor = UIColor.lightGrayColor()
-        _price.text = "合计：0.00元"
-        _price.textAlignment = NSTextAlignment.Right
-        _bottomView.addSubview(_price)
+        price = UILabel()
+        price.font = UIFont.systemFontOfSize(15)
+        price.textColor = UIColor.lightGrayColor()
+        price.text = "合计：0.00元"
+        price.textAlignment = NSTextAlignment.Right
+        bottomView.addSubview(price)
         
-        _submit = UIButton(type: UIButtonType.Custom)
-        _submit.backgroundColor = UIColor.blackColor()
-        _submit.titleLabel?.font = UIFont.systemFontOfSize(15)
-        _submit.setTitle("去 结 算", forState:UIControlState.Normal)
-        _bottomView.addSubview(_submit)
+        submit = UIButton(type: UIButtonType.Custom)
+        submit.backgroundColor = UIColor.blackColor()
+        submit.titleLabel?.font = UIFont.systemFontOfSize(15)
+        submit.setTitle("去 结 算", forState:UIControlState.Normal)
+        bottomView.addSubview(submit)
     }
     
     override func viewWillLayoutSubviews() {
-        _tableView.frame = CGRectMake(0, 0, view.width, view.height-50);
-        _bottomView.frame = CGRectMake(0, _tableView.bottom+1, view.width, 49);
-        _selectAll.frame = CGRectMake(10, 0, 90, _bottomView.height);
-        _price.frame = CGRectMake(_selectAll.right, 0, _bottomView.width-_selectAll.right-20-95, _bottomView.height);
-        _submit.frame = CGRectMake(_price.right+5, 8, 90, _bottomView.height-16);
+        tableView.frame = CGRectMake(0, 0, view.width, view.height-50);
+        bottomView.frame = CGRectMake(0, tableView.bottom+1, view.width, 49);
+        selectAll.frame = CGRectMake(10, 0, 90, bottomView.height);
+        price.frame = CGRectMake(selectAll.right, 0, bottomView.width-selectAll.right-20-95, bottomView.height);
+        submit.frame = CGRectMake(price.right+5, 8, 90, bottomView.height-16);
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _infoArray.count;
+        return infoArray.count;
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reuseID = "cell"
         var cell = tableView.dequeueReusableCellWithIdentifier(reuseID) as! TableViewCell?
         if (cell == nil) {
-            tableView.registerNib(UINib.init(nibName: "TableviewCell", bundle: nil), forCellReuseIdentifier: reuseID)
+            tableView.registerNib(UINib(nibName: "TableviewCell", bundle: nil), forCellReuseIdentifier: reuseID)
             cell = tableView.dequeueReusableCellWithIdentifier(reuseID) as! TableViewCell?
         }
-        let goodsInfo = _infoArray[indexPath.row] as! GoodsInfo
+        let goodsInfo = infoArray[indexPath.row] as! GoodsInfo
+        cell?.selectionStyle = UITableViewCellSelectionStyle.None
         cell?.goodsInfo = goodsInfo
+        cell?.plusButtonCallBack = {(num: Int) -> Void in
+            goodsInfo.goodsCount = NSNumber(int: (goodsInfo.goodsCount?.intValue)!+1)
+            print(num)
+            self.getTotalPrice()
+            self.tableView.reloadData()
+        }
+        cell?.minusButtoCallBack = {
+            if goodsInfo.goodsCount?.intValue<=1 {
+                return
+            }
+            goodsInfo.goodsCount = NSNumber(int: (goodsInfo.goodsCount?.intValue)!-1)
+            self.getTotalPrice()
+            self.tableView.reloadData()
+        }
         return cell!;
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 110;
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let goodsInfo = infoArray[indexPath.row] as! GoodsInfo
+        if goodsInfo.selectState!.isEqualToNumber(NSNumber(int: 1)) {
+            goodsInfo.selectState = NSNumber(int: 0)
+        }else {
+            goodsInfo.selectState = NSNumber(int: 1)
+        }
+        getTotalPrice()
+        tableView.reloadData()
+    }
+    
+    func selectAllClick(sender: UIButton) {
+        sender.selected = !sender.selected
+        for i in 0..<infoArray.count {
+            let goodsInfo = infoArray[i] as! GoodsInfo
+            if sender.selected {
+                goodsInfo.selectState = NSNumber(int: 1)
+            }else {
+                goodsInfo.selectState = NSNumber(int: 0)
+            }
+        }
+        getTotalPrice()
+        tableView.reloadData()
+    }
+    
+    func getTotalPrice() {
+        for i in 0..<infoArray.count {
+            let goodsInfo = infoArray[i] as! GoodsInfo
+            if goodsInfo.selectState!.isEqualToNumber(NSNumber(int: 1)) {
+               priceNum = priceNum + (goodsInfo.goodsCount?.floatValue)! * Float(goodsInfo.goodsPrice!)!
+            }
+        }
+        price.text = String(format: "合计%.2f元", priceNum)
+        priceNum = 0
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
