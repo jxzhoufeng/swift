@@ -19,6 +19,9 @@
 		E08E70E51D3362940027860D /* UIView+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = E08E70E41D3362940027860D /* UIView+Quick.m */; };
 		E08E70E81D3362D30027860D /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = E08E70E71D3362D30027860D /* UIColor+Hex.m */; };
 		E08E70EA1D33757B0027860D /* GoodsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E70E91D33757B0027860D /* GoodsInfo.swift */; };
+		E0999F851D3C7B0F0022F7BB /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0999F841D3C7B0F0022F7BB /* Status.swift */; };
+		E0999F871D3C7D020022F7BB /* StatusFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0999F861D3C7D020022F7BB /* StatusFrame.swift */; };
+		E0999F891D3C7FCF0022F7BB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0999F881D3C7FCF0022F7BB /* String+Extension.swift */; };
 		E0B984F01D38782F00A9FA96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B984EF1D38782F00A9FA96 /* HomeViewController.swift */; };
 		E0B984F21D387A7F00A9FA96 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B984F11D387A7F00A9FA96 /* MainTabBarController.swift */; };
 		E0B984F41D387AA500A9FA96 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B984F31D387AA500A9FA96 /* MainNavigationController.swift */; };
@@ -70,6 +73,9 @@
 		E08E70E61D3362D30027860D /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		E08E70E71D3362D30027860D /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		E08E70E91D33757B0027860D /* GoodsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsInfo.swift; sourceTree = "<group>"; };
+		E0999F841D3C7B0F0022F7BB /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		E0999F861D3C7D020022F7BB /* StatusFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusFrame.swift; sourceTree = "<group>"; };
+		E0999F881D3C7FCF0022F7BB /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E0B984EF1D38782F00A9FA96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E0B984F11D387A7F00A9FA96 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E0B984F31D387AA500A9FA96 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -148,23 +154,11 @@
 		E08E70AD1D333FAB0027860D /* MySwift */ = {
 			isa = PBXGroup;
 			children = (
-				E08E70E31D3362940027860D /* UIView+Quick.h */,
-				E08E70E41D3362940027860D /* UIView+Quick.m */,
-				E08E70E61D3362D30027860D /* UIColor+Hex.h */,
-				E08E70E71D3362D30027860D /* UIColor+Hex.m */,
 				E08E70AE1D333FAB0027860D /* AppDelegate.swift */,
-				E08E70B01D333FAB0027860D /* ViewController.swift */,
-				E08E70DE1D33473C0027860D /* TableViewCell.swift */,
-				E08E70E01D3347F40027860D /* TableviewCell.xib */,
-				E08E70E91D33757B0027860D /* GoodsInfo.swift */,
-				E0B984EF1D38782F00A9FA96 /* HomeViewController.swift */,
-				E0B985121D388D9E00A9FA96 /* HomeTableViewCell.swift */,
-				E0B985161D38BD7100A9FA96 /* GoodsDetailViewController.swift */,
-				E0B984F51D387CA000A9FA96 /* SecondViewController.swift */,
-				E0B985181D38CEF400A9FA96 /* SecondTableViewCell.swift */,
-				E0B984F11D387A7F00A9FA96 /* MainTabBarController.swift */,
-				E0B984F31D387AA500A9FA96 /* MainNavigationController.swift */,
-				E0B984F71D387E3B00A9FA96 /* BaseViewController.swift */,
+				E0999F831D3C77470022F7BB /* BaseVc */,
+				E0999F801D3C76CA0022F7BB /* Category */,
+				E0999F811D3C770F0022F7BB /* A */,
+				E0999F821D3C77280022F7BB /* B */,
 				E08E70B51D333FAB0027860D /* Assets.xcassets */,
 				E08E70B71D333FAB0027860D /* LaunchScreen.storyboard */,
 				E08E70BA1D333FAB0027860D /* Info.plist */,
@@ -189,6 +183,53 @@
 				E08E70D01D333FAB0027860D /* Info.plist */,
 			);
 			path = MySwiftUITests;
+			sourceTree = "<group>";
+		};
+		E0999F801D3C76CA0022F7BB /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				E0999F881D3C7FCF0022F7BB /* String+Extension.swift */,
+				E08E70E31D3362940027860D /* UIView+Quick.h */,
+				E08E70E41D3362940027860D /* UIView+Quick.m */,
+				E08E70E61D3362D30027860D /* UIColor+Hex.h */,
+				E08E70E71D3362D30027860D /* UIColor+Hex.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		E0999F811D3C770F0022F7BB /* A */ = {
+			isa = PBXGroup;
+			children = (
+				E08E70B01D333FAB0027860D /* ViewController.swift */,
+				E08E70DE1D33473C0027860D /* TableViewCell.swift */,
+				E08E70E01D3347F40027860D /* TableviewCell.xib */,
+				E08E70E91D33757B0027860D /* GoodsInfo.swift */,
+				E0B984EF1D38782F00A9FA96 /* HomeViewController.swift */,
+				E0B985121D388D9E00A9FA96 /* HomeTableViewCell.swift */,
+				E0B985161D38BD7100A9FA96 /* GoodsDetailViewController.swift */,
+			);
+			name = A;
+			sourceTree = "<group>";
+		};
+		E0999F821D3C77280022F7BB /* B */ = {
+			isa = PBXGroup;
+			children = (
+				E0B984F51D387CA000A9FA96 /* SecondViewController.swift */,
+				E0B985181D38CEF400A9FA96 /* SecondTableViewCell.swift */,
+				E0999F841D3C7B0F0022F7BB /* Status.swift */,
+				E0999F861D3C7D020022F7BB /* StatusFrame.swift */,
+			);
+			name = B;
+			sourceTree = "<group>";
+		};
+		E0999F831D3C77470022F7BB /* BaseVc */ = {
+			isa = PBXGroup;
+			children = (
+				E0B984F11D387A7F00A9FA96 /* MainTabBarController.swift */,
+				E0B984F31D387AA500A9FA96 /* MainNavigationController.swift */,
+				E0B984F71D387E3B00A9FA96 /* BaseViewController.swift */,
+			);
+			name = BaseVc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +303,7 @@
 				TargetAttributes = {
 					E08E70AA1D333FAB0027860D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = ZLTLFLF5BZ;
 					};
 					E08E70BE1D333FAB0027860D = {
 						CreatedOnToolsVersion = 7.3;
@@ -381,9 +423,12 @@
 				E0B985191D38CEF400A9FA96 /* SecondTableViewCell.swift in Sources */,
 				E08E70B11D333FAB0027860D /* ViewController.swift in Sources */,
 				E0B985131D388D9E00A9FA96 /* HomeTableViewCell.swift in Sources */,
+				E0999F891D3C7FCF0022F7BB /* String+Extension.swift in Sources */,
 				E08E70E51D3362940027860D /* UIView+Quick.m in Sources */,
 				E08E70EA1D33757B0027860D /* GoodsInfo.swift in Sources */,
 				E0B984F01D38782F00A9FA96 /* HomeViewController.swift in Sources */,
+				E0999F871D3C7D020022F7BB /* StatusFrame.swift in Sources */,
+				E0999F851D3C7B0F0022F7BB /* Status.swift in Sources */,
 				E0B984F61D387CA000A9FA96 /* SecondViewController.swift in Sources */,
 				E08E70AF1D333FAB0027860D /* AppDelegate.swift in Sources */,
 				E0B985171D38BD7100A9FA96 /* GoodsDetailViewController.swift in Sources */,
@@ -522,10 +567,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zhoufeng.MySwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MySwift/MySwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -537,10 +585,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zhoufeng.MySwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MySwift/MySwift-Bridging-Header.h";
 			};
 			name = Release;
