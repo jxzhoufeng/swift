@@ -10,12 +10,36 @@ import UIKit
 
 class SecondTableViewCell: UITableViewCell {
     
-    var iconImage: UIImageView!
-    var name: UILabel!
-    var status: UILabel!
-    var photo: UIImageView?
-    var time: UILabel!
-    var from: UILabel!
+    lazy var iconImage: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    var name: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.orangeColor()
+        label.font = UIFont.systemFontOfSize(nameFont)
+        return label
+    }()
+    var status: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.systemFontOfSize(statusFont)
+        return label
+    }()
+    var photo: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    var time: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFontOfSize(13)
+        return label
+    }()
+    var from: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFontOfSize(13)
+        return label
+    }()
     
     var statusFrame: StatusFrame? {
         didSet {
@@ -29,29 +53,17 @@ class SecondTableViewCell: UITableViewCell {
     }
     
     func setupSubview() {
-        iconImage = UIImageView()
         contentView.addSubview(iconImage)
         
-        name = UILabel()
-        name.textColor = UIColor.orangeColor()
-        name.font = UIFont.systemFontOfSize(nameFont)
         contentView.addSubview(name)
         
-        time = UILabel()
-        time.font = UIFont.systemFontOfSize(nameFont)
         contentView.addSubview(time)
         
-        from = UILabel()
-        from.font = UIFont.systemFontOfSize(nameFont)
         contentView.addSubview(from)
         
-        status = UILabel()
-        status.numberOfLines = 0
-        status.font = UIFont.systemFontOfSize(statusFont)
         contentView.addSubview(status)
-        
-        photo = UIImageView()
-        contentView.addSubview(photo!)
+
+        contentView.addSubview(photo)
     }
     
     func setupSubviewFrame() {
@@ -69,9 +81,11 @@ class SecondTableViewCell: UITableViewCell {
         status.frame = (statusFrame?.statusFrame)!
         status.text = (statusFrame?.status?.status)!
         if statusFrame?.photoFrame != nil {
-            photo!.frame = (statusFrame?.photoFrame)!
+            photo.frame = (statusFrame?.photoFrame)!
             //        photo.sd_setImageWithURL(NSURL(string: (statusFrame?.status?.photo)!))
-            photo!.image = UIImage(named: (statusFrame?.status?.photo)!)
+            photo.image = UIImage(named: (statusFrame?.status?.photo)!)
+        }else {
+            photo.frame = CGRectZero
         }
     }
     

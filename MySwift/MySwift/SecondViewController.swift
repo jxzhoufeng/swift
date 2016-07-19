@@ -87,6 +87,7 @@ class SecondViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     func tableHeaderView() -> UIImageView {
         headerImageView = UIImageView()
         headerImageView!.image = UIImage(named: "123")
+        headerImageView?.contentMode = UIViewContentMode.Bottom
         headerImageView!.frame = CGRectMake(0, 0, 100, 200)
         
         let iconView = UIImageView()
