@@ -15,6 +15,7 @@ class MainTabBarController: UITabBarController {
         // Do any additional setup after loading the view.
 //        tabBar.barTintColor = UIColor(hexString: "06476d")
         addChildViewControllers(HomeViewController(), title: "首页")
+        addChildViewControllers(FriendViewController(), title: "朋友");
         addChildViewControllers(SecondViewController(), title: "圈子")
     }
     

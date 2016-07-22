@@ -36,10 +36,10 @@ class StatusFrame: NSObject {
         iconImageFrame = CGRectMake(margin, margin, 50, 50);
         
         let nameSize = status?.name?.size(UIFont.systemFontOfSize(nameFont))
-        let timeSize = status?.time?.size(UIFont.systemFontOfSize(nameFont))
-        let fromSize = status?.from?.size(UIFont.systemFontOfSize(nameFont))
-        nameFrame = CGRectMake(CGRectGetMaxX(iconImageFrame!)+margin, margin, (nameSize?.width)!, (nameSize?.height)!)
-        timeFrame = CGRectMake(CGRectGetMaxX(iconImageFrame!)+margin, CGRectGetMaxY(iconImageFrame!)-(timeSize?.height)!, (timeSize?.width)!, (timeSize?.height)!)
+        let timeSize = status?.time?.size(UIFont.systemFontOfSize(13))
+        let fromSize = status?.from?.size(UIFont.systemFontOfSize(13))
+        nameFrame = CGRectMake(CGRectGetMaxX(iconImageFrame!)+margin, margin+5, (nameSize?.width)!, (nameSize?.height)!)
+        timeFrame = CGRectMake(CGRectGetMaxX(iconImageFrame!)+margin, CGRectGetMaxY(iconImageFrame!)-(timeSize?.height)!-5, (timeSize?.width)!, (timeSize?.height)!)
         fromFrame = CGRectMake(CGRectGetMaxX(timeFrame!)+5, timeFrame!.origin.y, (fromSize?.width)!, (fromSize?.height)!)
         
         let statusSize = status?.status?.size(UIFont.systemFontOfSize(statusFont), constrainedToSize: CGSizeMake(screenWidth-2*margin, CGFloat(MAXFLOAT)))

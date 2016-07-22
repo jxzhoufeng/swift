@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB575920B7D378EBEF2B1C30 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB38A94ADBEC95AD8D0BBEF0 /* Pods.framework */; };
+		E04B51581D3E054E001B799B /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04B51571D3E054E001B799B /* FriendViewController.swift */; };
 		E08E70AF1D333FAB0027860D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E70AE1D333FAB0027860D /* AppDelegate.swift */; };
 		E08E70B11D333FAB0027860D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E70B01D333FAB0027860D /* ViewController.swift */; };
 		E08E70B61D333FAB0027860D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E08E70B51D333FAB0027860D /* Assets.xcassets */; };
@@ -30,6 +31,8 @@
 		E0B985131D388D9E00A9FA96 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B985121D388D9E00A9FA96 /* HomeTableViewCell.swift */; };
 		E0B985171D38BD7100A9FA96 /* GoodsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B985161D38BD7100A9FA96 /* GoodsDetailViewController.swift */; };
 		E0B985191D38CEF400A9FA96 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B985181D38CEF400A9FA96 /* SecondTableViewCell.swift */; };
+		E0DFF7101D41C26F001988B9 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */; };
+		E0DFF7151D41C5FD001988B9 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DFF7141D41C5FD001988B9 /* FriendTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,7 @@
 		70E9A3EFECCBBB4408D169E5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AB38A94ADBEC95AD8D0BBEF0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB279AE69DDEB45C0A34F5A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E04B51571D3E054E001B799B /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		E08E70AB1D333FAB0027860D /* MySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08E70AE1D333FAB0027860D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E08E70B01D333FAB0027860D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +88,9 @@
 		E0B985121D388D9E00A9FA96 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		E0B985161D38BD7100A9FA96 /* GoodsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsDetailViewController.swift; sourceTree = "<group>"; };
 		E0B985181D38CEF400A9FA96 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
+		E0DFF70E1D41C26F001988B9 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		E0DFF7141D41C5FD001988B9 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +136,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E04B51561D3E04D6001B799B /* C */ = {
+			isa = PBXGroup;
+			children = (
+				E04B51571D3E054E001B799B /* FriendViewController.swift */,
+				E0DFF7141D41C5FD001988B9 /* FriendTableViewCell.swift */,
+			);
+			name = C;
+			sourceTree = "<group>";
+		};
 		E08E70A21D333FAB0027860D = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +175,7 @@
 				E0999F801D3C76CA0022F7BB /* Category */,
 				E0999F811D3C770F0022F7BB /* A */,
 				E0999F821D3C77280022F7BB /* B */,
+				E04B51561D3E04D6001B799B /* C */,
 				E08E70B51D333FAB0027860D /* Assets.xcassets */,
 				E08E70B71D333FAB0027860D /* LaunchScreen.storyboard */,
 				E08E70BA1D333FAB0027860D /* Info.plist */,
@@ -188,6 +205,8 @@
 		E0999F801D3C76CA0022F7BB /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E0DFF70E1D41C26F001988B9 /* UIImage+Color.h */,
+				E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */,
 				E0999F881D3C7FCF0022F7BB /* String+Extension.swift */,
 				E08E70E31D3362940027860D /* UIView+Quick.h */,
 				E08E70E41D3362940027860D /* UIView+Quick.m */,
@@ -421,10 +440,13 @@
 				E08E70E81D3362D30027860D /* UIColor+Hex.m in Sources */,
 				E0B984F21D387A7F00A9FA96 /* MainTabBarController.swift in Sources */,
 				E0B985191D38CEF400A9FA96 /* SecondTableViewCell.swift in Sources */,
+				E04B51581D3E054E001B799B /* FriendViewController.swift in Sources */,
+				E0DFF7151D41C5FD001988B9 /* FriendTableViewCell.swift in Sources */,
 				E08E70B11D333FAB0027860D /* ViewController.swift in Sources */,
 				E0B985131D388D9E00A9FA96 /* HomeTableViewCell.swift in Sources */,
 				E0999F891D3C7FCF0022F7BB /* String+Extension.swift in Sources */,
 				E08E70E51D3362940027860D /* UIView+Quick.m in Sources */,
+				E0DFF7101D41C26F001988B9 /* UIImage+Color.m in Sources */,
 				E08E70EA1D33757B0027860D /* GoodsInfo.swift in Sources */,
 				E0B984F01D38782F00A9FA96 /* HomeViewController.swift in Sources */,
 				E0999F871D3C7D020022F7BB /* StatusFrame.swift in Sources */,
