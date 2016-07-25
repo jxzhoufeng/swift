@@ -19,10 +19,14 @@ class FriendTableViewCell: UITableViewCell {
     var backView: UIView!
     var rightView: UIView?
     var closeButton: UIButton?
+    private var commentLine: UIView!
     
+    var commentCallback: (() -> Void)?
     var attentionCallback: (() -> Void)?
     var shareCallback: (() -> Void)?
     var reportCallback: (() -> Void)?
+    
+//    private var isOpen: Bool?
     
     var friendsInfo: FriendsInfo! {
         didSet {
@@ -34,7 +38,10 @@ class FriendTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        isOpen = false
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendTableViewCell.hiddenRightView), name: "hiddenRightView", object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendTableViewCell.openCell), name: "openCell", object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendTableViewCell.closeCell), name: "closeCell", object: nil)
         setupSubview()
     }
     
@@ -72,9 +79,14 @@ class FriendTableViewCell: UITableViewCell {
         backView.addSubview(likeButton)
         
         commentButton = UIButton(type: UIButtonType.Custom)
-        commentButton.setTitle("ping", forState:UIControlState.Normal)
+        commentButton.setTitle("评论", forState:UIControlState.Normal)
+        commentButton.addTarget(self, action: #selector(FriendTableViewCell.commentButtonClick), forControlEvents: UIControlEvents.TouchUpInside)
         commentButton.titleLabel!.font = UIFont.systemFontOfSize(13)
         backView.addSubview(commentButton)
+        
+        commentLine = UIView()
+        commentLine.backgroundColor = UIColor.orangeColor()
+        backView.addSubview(commentLine)
     }
     
     override func layoutSubviews() {
@@ -83,11 +95,16 @@ class FriendTableViewCell: UITableViewCell {
         iconImageView.layer.cornerRadius = iconImageView.width/2;
         nameLabel.frame = CGRectMake(iconImageView.right+10, 5, backView.width-iconImageView.right-10-50, iconImageView.height);
         showRightView.frame = CGRectMake(backView.width-50, 0, 50, iconImageView.bottom+5);
-        photoImageView.frame = CGRectMake(0, iconImageView.bottom+5, backView.width, backView.height-iconImageView.bottom-5-30);
+        photoImageView.frame = CGRectMake(0, iconImageView.bottom+5, backView.width, backView.width*0.59);
         likeButton.frame = CGRectMake(10, photoImageView.bottom, 100, 30);
         likeButton.sizeToFit()
         likeButton.height = 30;
         commentButton.frame = CGRectMake(backView.width-30-10, photoImageView.bottom, 30, 30);
+        if friendsInfo.isOpen!.isEqualToNumber(NSNumber(int: 1)) {
+            commentLine.frame = CGRectMake(10, commentButton.bottom, backView.width-20, 1)
+        }else {
+            commentLine.frame = CGRectZero
+        }
     }
     
     func showRightViewClick() {
@@ -144,6 +161,12 @@ class FriendTableViewCell: UITableViewCell {
         return btn;
     }
     
+    func commentButtonClick() {
+        if let callBack = commentCallback {
+            callBack()
+        }
+    }
+    
     func rightBtnClick(sender: UIButton) {
         switch sender.tag {
         case 1000:
@@ -163,5 +186,19 @@ class FriendTableViewCell: UITableViewCell {
     
     func hiddenRightView() {
         close()
+    }
+    
+//    func openCell() {
+//        isOpen = true
+//        layoutSubviews()
+//    }
+//    
+//    func closeCell() {
+//        isOpen = false
+//        layoutSubviews()
+//    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

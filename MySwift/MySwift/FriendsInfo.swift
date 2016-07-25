@@ -13,6 +13,7 @@ class FriendsInfo: NSObject {
     var icon:String?
     var name:String?
     var photo:String?
+    var isOpen:NSNumber?
     
     init(dict: [String: AnyObject]) {
         super.init()

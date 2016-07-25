@@ -15,14 +15,20 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     var dataArray: NSMutableArray!
     var publicArray: NSMutableArray!
     var privateArray: NSMutableArray!
+    var isOpen: Bool!
+    var selectedIndexPath: NSIndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        isOpen = false
+        
         var publicDict = [String:AnyObject]()
         publicArray = NSMutableArray()
         for _ in 0..<10 {
             publicDict["icon"] = "111.jpg"
             publicDict["name"] = "学友哥"
             publicDict["photo"] = "Album7"
+            publicDict["isOpen"] = NSNumber(integer: 0)
             let friendsInfo = FriendsInfo(dict: publicDict)
             publicArray.addObject(friendsInfo)
         }
@@ -33,6 +39,7 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             privateDict["icon"] = "1122.jpg"
             privateDict["name"] = "小学僧"
             privateDict["photo"] = "Album3"
+            privateDict["isOpen"] = NSNumber(integer: 0)
             let friendsInfo = FriendsInfo(dict: privateDict)
             privateArray.addObject(friendsInfo)
         }
@@ -83,19 +90,45 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         cell?.reportCallback = {
             print("jubao\(indexPath.row)")
         }
+        cell?.commentCallback = {
+            if indexPath.row == self.selectedIndexPath?.row {
+                self.isOpen = !self.isOpen
+            }else if indexPath.row != self.selectedIndexPath?.row {
+                self.isOpen = true
+            }
+            if self.isOpen! {
+                friendsInfo.isOpen = NSNumber(integer: 1)
+            }else {
+                friendsInfo.isOpen = NSNumber(integer: 0)
+            }
+            self.selectedIndexPath = indexPath
+            tableView.reloadData()
+            tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
+        }
         return cell!
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 450
+        if isOpen! && selectedIndexPath?.row == indexPath.row {
+            return 500
+        }else {
+            return 300
+        }
     }
+    
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         NSNotificationCenter.defaultCenter().postNotificationName("hiddenRightView", object: nil)
     }
     
     func segmentedControl(sender: UISegmentedControl) {
+        NSNotificationCenter.defaultCenter().postNotificationName("hiddenRightView", object: nil)
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Top)
+        selectedIndexPath = nil
+        for i in 0..<dataArray.count {
+            let friendsInfo = dataArray[i] as! FriendsInfo
+            friendsInfo.isOpen = NSNumber(integer: 0)
+        }
         switch sender.selectedSegmentIndex {
         case 0:
             dataArray = publicArray
