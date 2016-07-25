@@ -17,23 +17,24 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     var privateArray: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let publicDict = NSMutableDictionary()
+        var publicDict = [String:AnyObject]()
         publicArray = NSMutableArray()
         for _ in 0..<10 {
-            publicDict["icon"] = "111.jpg";
-            publicDict["name"] = "学友哥";
-            publicDict["photo"] = "Album7";
-            publicArray.addObject(publicDict)
+            publicDict["icon"] = "111.jpg"
+            publicDict["name"] = "学友哥"
+            publicDict["photo"] = "Album7"
+            let friendsInfo = FriendsInfo(dict: publicDict)
+            publicArray.addObject(friendsInfo)
         }
         
-        let privateDict = NSMutableDictionary()
+        var privateDict = [String:AnyObject]()
         privateArray = NSMutableArray()
         for _ in 0..<8 {
-            privateDict["icon"] = "1122.jpg";
-            privateDict["name"] = "小学僧";
-            privateDict["photo"] = "Album3";
-            privateArray.addObject(privateDict)
+            privateDict["icon"] = "1122.jpg"
+            privateDict["name"] = "小学僧"
+            privateDict["photo"] = "Album3"
+            let friendsInfo = FriendsInfo(dict: privateDict)
+            privateArray.addObject(friendsInfo)
         }
         
         dataArray = publicArray
@@ -70,16 +71,27 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         if cell == nil {
             cell = FriendTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuserID)
         }
-        let data = dataArray[indexPath.row] as? NSDictionary
+        let friendsInfo = dataArray[indexPath.row] as! FriendsInfo
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        cell?.iconImageView.image = UIImage(named: data!["icon"] as! String)
-        cell?.nameLabel.text = data!["name"] as? String
-        cell?.photoImageView.image = UIImage(named: data!["photo"] as! String)
+        cell?.friendsInfo = friendsInfo
+        cell?.attentionCallback = {
+            print("guanzhu\(friendsInfo.name!)")
+        }
+        cell?.shareCallback = { () -> Void in
+            print("fenxiang\(indexPath.row)")
+        }
+        cell?.reportCallback = {
+            print("jubao\(indexPath.row)")
+        }
         return cell!
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 450
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        NSNotificationCenter.defaultCenter().postNotificationName("hiddenRightView", object: nil)
     }
     
     func segmentedControl(sender: UISegmentedControl) {

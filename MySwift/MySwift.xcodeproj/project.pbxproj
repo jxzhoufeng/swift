@@ -32,6 +32,7 @@
 		E0B985131D388D9E00A9FA96 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B985121D388D9E00A9FA96 /* HomeTableViewCell.swift */; };
 		E0B985171D38BD7100A9FA96 /* GoodsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B985161D38BD7100A9FA96 /* GoodsDetailViewController.swift */; };
 		E0B985191D38CEF400A9FA96 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B985181D38CEF400A9FA96 /* SecondTableViewCell.swift */; };
+		E0DB61771D45A9790035738E /* FriendsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DB61761D45A9790035738E /* FriendsInfo.swift */; };
 		E0DFF7101D41C26F001988B9 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		E0B985121D388D9E00A9FA96 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		E0B985161D38BD7100A9FA96 /* GoodsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsDetailViewController.swift; sourceTree = "<group>"; };
 		E0B985181D38CEF400A9FA96 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
+		E0DB61761D45A9790035738E /* FriendsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsInfo.swift; sourceTree = "<group>"; };
 		E0DFF70E1D41C26F001988B9 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +143,7 @@
 			children = (
 				E04A3EC51D41FD3A00491325 /* FriendViewController.swift */,
 				E04A3EC11D41FCCF00491325 /* FriendTableViewCell.swift */,
+				E0DB61761D45A9790035738E /* FriendsInfo.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 			files = (
 				E0B984F41D387AA500A9FA96 /* MainNavigationController.swift in Sources */,
 				E08E70DF1D33473C0027860D /* TableViewCell.swift in Sources */,
+				E0DB61771D45A9790035738E /* FriendsInfo.swift in Sources */,
 				E0B984F81D387E3B00A9FA96 /* BaseViewController.swift in Sources */,
 				E08E70E81D3362D30027860D /* UIColor+Hex.m in Sources */,
 				E04A3EC61D41FD3A00491325 /* FriendViewController.swift in Sources */,

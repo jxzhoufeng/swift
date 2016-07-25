@@ -17,10 +17,24 @@ class FriendTableViewCell: UITableViewCell {
     var likeButton: UIButton!
     var commentButton: UIButton!
     var backView: UIView!
-    var rightView: UIView!
+    var rightView: UIView?
+    var closeButton: UIButton?
+    
+    var attentionCallback: (() -> Void)?
+    var shareCallback: (() -> Void)?
+    var reportCallback: (() -> Void)?
+    
+    var friendsInfo: FriendsInfo! {
+        didSet {
+            self.iconImageView.image = UIImage(named: friendsInfo.icon!)
+            self.nameLabel.text = friendsInfo.name!
+            self.photoImageView.image = UIImage(named: friendsInfo.photo!)
+        }
+    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendTableViewCell.hiddenRightView), name: "hiddenRightView", object: nil)
         setupSubview()
     }
     
@@ -79,40 +93,43 @@ class FriendTableViewCell: UITableViewCell {
     func showRightViewClick() {
         showRightView.hidden = true;
         rightView = UIView()
-        rightView.backgroundColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.8)
-        backView.addSubview(rightView)
-        rightView.frame = CGRectMake(backView.width, 0, 50, photoImageView.bottom)
+        rightView!.backgroundColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.8)
+        backView.addSubview(rightView!)
+        rightView!.frame = CGRectMake(backView.width, 0, 50, photoImageView.bottom)
         UIView.animateWithDuration(0.25) { 
-            self.rightView.frame = CGRectMake(self.backView.width-50, 0, 50, self.photoImageView.bottom);
+            self.rightView!.frame = CGRectMake(self.backView.width-50, 0, 50, self.photoImageView.bottom);
         }
         
-        let closeButton = UIButton(type:UIButtonType.Custom)
-        closeButton.backgroundColor = UIColor.clearColor()
-        closeButton.addTarget(self, action:#selector(FriendTableViewCell.close), forControlEvents:UIControlEvents.TouchUpInside)
-        closeButton.setTitle("×", forState:UIControlState.Normal)
-        closeButton.titleLabel!.font = UIFont.systemFontOfSize(25)
-        closeButton.frame = CGRectMake(0, 0, 50, 50);
-        rightView.addSubview(closeButton)
+        closeButton = UIButton(type:UIButtonType.Custom)
+        closeButton!.backgroundColor = UIColor.clearColor()
+        closeButton!.addTarget(self, action:#selector(FriendTableViewCell.close), forControlEvents:UIControlEvents.TouchUpInside)
+        closeButton!.setTitle("×", forState:UIControlState.Normal)
+        closeButton!.titleLabel!.font = UIFont.systemFontOfSize(25)
+        closeButton!.frame = CGRectMake(0, 0, 50, 50);
+        rightView!.addSubview(closeButton!)
         
-        let attention = createRightBtn("关注", Y: closeButton.bottom)
-        let line1 = UIView(frame: CGRectMake(10, attention.height-1, rightView.width-20, 1))
+        let attention = createRightBtn("关注", Y: closeButton!.bottom)
+        attention.tag = 1000;
+        let line1 = UIView(frame: CGRectMake(10, attention.height-1, rightView!.width-20, 1))
         line1.backgroundColor = UIColor.whiteColor()
         attention.addSubview(line1)
         
         let share = createRightBtn("分享", Y:attention.bottom)
-        let line2 = UIView(frame: CGRectMake(10, share.height-1, rightView.width-20, 1))
+        share.tag = 1001;
+        let line2 = UIView(frame: CGRectMake(10, share.height-1, rightView!.width-20, 1))
         line2.backgroundColor = UIColor.whiteColor()
         share.addSubview(line2)
         
-        _ = createRightBtn("举报", Y:share.bottom)
+        let report = createRightBtn("举报", Y:share.bottom)
+        report.tag = 1002;
     }
     
     func close() {
         showRightView.hidden = false
         UIView.animateWithDuration(0.25, animations: { 
-            self.rightView.frame = CGRectMake(self.backView.width, 0, 50, self.photoImageView.bottom)
+            self.rightView?.frame = CGRectMake(self.backView.width, 0, 50, self.photoImageView.bottom)
             }) { (finish) in
-                self.rightView.removeFromSuperview()
+                self.rightView?.removeFromSuperview()
         }
     }
     
@@ -122,7 +139,29 @@ class FriendTableViewCell: UITableViewCell {
         btn.setTitle(title, forState:UIControlState.Normal)
         btn.titleLabel!.font = UIFont.systemFontOfSize(15)
         btn.frame = CGRectMake(0, Y, 50, photoImageView.height/3);
-        rightView.addSubview(btn)
+        btn.addTarget(self, action: #selector(FriendTableViewCell.rightBtnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        rightView!.addSubview(btn)
         return btn;
+    }
+    
+    func rightBtnClick(sender: UIButton) {
+        switch sender.tag {
+        case 1000:
+            if let callBack = attentionCallback {
+                callBack()
+            }
+        case 1001:
+            if let callBack = shareCallback {
+                callBack()
+            }
+        default:
+            if let callBack = reportCallback {
+                callBack()
+            }
+        }
+    }
+    
+    func hiddenRightView() {
+        close()
     }
 }
