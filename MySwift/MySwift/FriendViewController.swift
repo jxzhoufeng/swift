@@ -110,7 +110,7 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if isOpen! && selectedIndexPath?.row == indexPath.row {
-            return 500
+            return 450
         }else {
             return 300
         }

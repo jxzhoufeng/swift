@@ -19,14 +19,18 @@ class FriendTableViewCell: UITableViewCell {
     var backView: UIView!
     var rightView: UIView?
     var closeButton: UIButton?
-    private var commentLine: UIView!
+    
+    private var commentView: UIView?
+    private var commentLine: UIView?
+    private var commentLabel1: UILabel?
+    private var commentLabel2: UILabel?
+    private var commentLabel3: UILabel?
+    private var moreComment: UIButton?
     
     var commentCallback: (() -> Void)?
     var attentionCallback: (() -> Void)?
     var shareCallback: (() -> Void)?
     var reportCallback: (() -> Void)?
-    
-//    private var isOpen: Bool?
     
     var friendsInfo: FriendsInfo! {
         didSet {
@@ -38,10 +42,7 @@ class FriendTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        isOpen = false
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendTableViewCell.hiddenRightView), name: "hiddenRightView", object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendTableViewCell.openCell), name: "openCell", object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendTableViewCell.closeCell), name: "closeCell", object: nil)
         setupSubview()
     }
     
@@ -66,7 +67,7 @@ class FriendTableViewCell: UITableViewCell {
         showRightView = UIButton(type:UIButtonType.Custom)
         showRightView.addTarget(self, action: #selector(FriendTableViewCell.showRightViewClick), forControlEvents: UIControlEvents.TouchUpInside)
         showRightView.setTitle("+", forState: UIControlState.Normal)
-        showRightView.titleLabel!.font = UIFont.systemFontOfSize(25)
+        showRightView.titleLabel!.font = UIFont.systemFontOfSize(35)
         showRightView.backgroundColor = UIColor.blackColor();
         backView.addSubview(showRightView)
         
@@ -84,9 +85,26 @@ class FriendTableViewCell: UITableViewCell {
         commentButton.titleLabel!.font = UIFont.systemFontOfSize(13)
         backView.addSubview(commentButton)
         
+        commentView = UIView()
+        commentView?.backgroundColor = UIColor.clearColor()
+        backView.addSubview(commentView!)
+        
         commentLine = UIView()
-        commentLine.backgroundColor = UIColor.orangeColor()
-        backView.addSubview(commentLine)
+        commentLine?.backgroundColor = UIColor.whiteColor()
+        commentView?.addSubview(commentLine!)
+        
+        commentLabel1 = createCommentLabel()
+        commentLabel1?.text = "尼玛：丑哭了丑哭了辣眼睛"
+        commentLabel2 = createCommentLabel()
+        commentLabel2?.text = "尼美：😒😒😒😒😒😒😒😒"
+        commentLabel3 = createCommentLabel()
+        commentLabel3?.text = "凤姐：我很欣赏你"
+        
+        moreComment = UIButton(type: UIButtonType.Custom)
+        moreComment?.setTitle("查看全部评论", forState: UIControlState.Normal)
+        moreComment?.titleLabel?.font = UIFont.systemFontOfSize(nameFont)
+        moreComment?.backgroundColor = UIColor.clearColor()
+        commentView?.addSubview(moreComment!)
     }
     
     override func layoutSubviews() {
@@ -101,9 +119,20 @@ class FriendTableViewCell: UITableViewCell {
         likeButton.height = 30;
         commentButton.frame = CGRectMake(backView.width-30-10, photoImageView.bottom, 30, 30);
         if friendsInfo.isOpen!.isEqualToNumber(NSNumber(int: 1)) {
-            commentLine.frame = CGRectMake(10, commentButton.bottom, backView.width-20, 1)
+            commentView?.frame = CGRectMake(0, commentButton.bottom, backView.width, backView.height-commentButton.bottom)
+            commentLine?.frame = CGRectMake(10, 0, commentView!.width-20, 1)
+            commentLabel1?.frame = CGRectMake(10, (commentLine?.bottom)!+10, commentLine!.width, 30)
+            commentLabel2?.frame = CGRectMake(10, (commentLabel1?.bottom)!, commentLine!.width, 30)
+            commentLabel3?.frame = CGRectMake(10, (commentLabel2?.bottom)!, commentLine!.width, 30)
+            moreComment?.frame = CGRectMake(10, (commentLabel3?.bottom)!+10, 100, 30)
         }else {
-            commentLine.frame = CGRectZero
+            commentView?.frame = CGRectZero
+            commentLine?.frame = CGRectZero
+            commentLabel1?.frame = CGRectZero
+            commentLabel2?.frame = CGRectZero
+            commentLabel3?.frame = CGRectZero
+            moreComment?.frame = CGRectZero
+
         }
     }
     
@@ -121,7 +150,7 @@ class FriendTableViewCell: UITableViewCell {
         closeButton!.backgroundColor = UIColor.clearColor()
         closeButton!.addTarget(self, action:#selector(FriendTableViewCell.close), forControlEvents:UIControlEvents.TouchUpInside)
         closeButton!.setTitle("×", forState:UIControlState.Normal)
-        closeButton!.titleLabel!.font = UIFont.systemFontOfSize(25)
+        closeButton!.titleLabel!.font = UIFont.systemFontOfSize(35)
         closeButton!.frame = CGRectMake(0, 0, 50, 50);
         rightView!.addSubview(closeButton!)
         
@@ -159,6 +188,16 @@ class FriendTableViewCell: UITableViewCell {
         btn.addTarget(self, action: #selector(FriendTableViewCell.rightBtnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         rightView!.addSubview(btn)
         return btn;
+    }
+    
+    func createCommentLabel() -> UILabel {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.systemFontOfSize(nameFont)
+        label.backgroundColor = UIColor.clearColor()
+        label.textColor = UIColor.whiteColor()
+        commentView?.addSubview(label)
+        return label
     }
     
     func commentButtonClick() {

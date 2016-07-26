@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB575920B7D378EBEF2B1C30 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB38A94ADBEC95AD8D0BBEF0 /* Pods.framework */; };
+		E02143031D46FAA00098F2B9 /* FriendsFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02143021D46FAA00098F2B9 /* FriendsFrame.swift */; };
 		E04A3EC31D41FCCF00491325 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04A3EC11D41FCCF00491325 /* FriendTableViewCell.swift */; };
 		E04A3EC61D41FD3A00491325 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04A3EC51D41FD3A00491325 /* FriendViewController.swift */; };
 		E08E70AF1D333FAB0027860D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E70AE1D333FAB0027860D /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		70E9A3EFECCBBB4408D169E5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AB38A94ADBEC95AD8D0BBEF0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB279AE69DDEB45C0A34F5A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E02143021D46FAA00098F2B9 /* FriendsFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsFrame.swift; sourceTree = "<group>"; };
 		E04A3EC11D41FCCF00491325 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		E04A3EC51D41FD3A00491325 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		E08E70AB1D333FAB0027860D /* MySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				E04A3EC51D41FD3A00491325 /* FriendViewController.swift */,
 				E04A3EC11D41FCCF00491325 /* FriendTableViewCell.swift */,
 				E0DB61761D45A9790035738E /* FriendsInfo.swift */,
+				E02143021D46FAA00098F2B9 /* FriendsFrame.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				E08E70B11D333FAB0027860D /* ViewController.swift in Sources */,
 				E0B985131D388D9E00A9FA96 /* HomeTableViewCell.swift in Sources */,
 				E0999F891D3C7FCF0022F7BB /* String+Extension.swift in Sources */,
+				E02143031D46FAA00098F2B9 /* FriendsFrame.swift in Sources */,
 				E08E70E51D3362940027860D /* UIView+Quick.m in Sources */,
 				E0DFF7101D41C26F001988B9 /* UIImage+Color.m in Sources */,
 				E08E70EA1D33757B0027860D /* GoodsInfo.swift in Sources */,
