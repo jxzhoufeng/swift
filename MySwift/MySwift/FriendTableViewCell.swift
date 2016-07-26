@@ -37,6 +37,9 @@ class FriendTableViewCell: UITableViewCell {
             self.iconImageView.image = UIImage(named: friendsInfo.icon!)
             self.nameLabel.text = friendsInfo.name!
             self.photoImageView.image = UIImage(named: friendsInfo.photo!)
+            self.commentLabel1?.text = friendsInfo.firstComment
+            self.commentLabel2?.text = friendsInfo.secondComment
+            self.commentLabel3?.text = friendsInfo.thirdComment
         }
     }
     
@@ -94,11 +97,8 @@ class FriendTableViewCell: UITableViewCell {
         commentView?.addSubview(commentLine!)
         
         commentLabel1 = createCommentLabel()
-        commentLabel1?.text = "尼玛：丑哭了丑哭了辣眼睛"
         commentLabel2 = createCommentLabel()
-        commentLabel2?.text = "尼美：😒😒😒😒😒😒😒😒"
         commentLabel3 = createCommentLabel()
-        commentLabel3?.text = "凤姐：我很欣赏你"
         
         moreComment = UIButton(type: UIButtonType.Custom)
         moreComment?.setTitle("查看全部评论", forState: UIControlState.Normal)
@@ -132,7 +132,6 @@ class FriendTableViewCell: UITableViewCell {
             commentLabel2?.frame = CGRectZero
             commentLabel3?.frame = CGRectZero
             moreComment?.frame = CGRectZero
-
         }
     }
     

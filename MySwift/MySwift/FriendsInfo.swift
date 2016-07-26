@@ -13,6 +13,9 @@ class FriendsInfo: NSObject {
     var icon:String?
     var name:String?
     var photo:String?
+    var firstComment:String?
+    var secondComment:String?
+    var thirdComment:String?
     var isOpen:NSNumber?
     
     init(dict: [String: AnyObject]) {

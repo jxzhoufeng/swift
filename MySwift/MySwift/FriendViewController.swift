@@ -28,6 +28,9 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             publicDict["icon"] = "111.jpg"
             publicDict["name"] = "学友哥"
             publicDict["photo"] = "Album7"
+            publicDict["firstComment"] = "尼玛：丑哭了丑哭了辣眼睛"
+            publicDict["secondComment"] = "尼美：😒😒😒😒😒😒😒😒"
+            publicDict["thirdComment"] = "凤姐：我很欣赏你"
             publicDict["isOpen"] = NSNumber(integer: 0)
             let friendsInfo = FriendsInfo(dict: publicDict)
             publicArray.addObject(friendsInfo)
@@ -39,6 +42,9 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             privateDict["icon"] = "1122.jpg"
             privateDict["name"] = "小学僧"
             privateDict["photo"] = "Album3"
+            privateDict["firstComment"] = "尼玛：啦啦啦啦啦啦啦啦啦"
+            privateDict["secondComment"] = "尼美：😊😊😊😊😊😊😊😊😊😊"
+            privateDict["thirdComment"] = "凤姐：发手法而非发放"
             privateDict["isOpen"] = NSNumber(integer: 0)
             let friendsInfo = FriendsInfo(dict: privateDict)
             privateArray.addObject(friendsInfo)
