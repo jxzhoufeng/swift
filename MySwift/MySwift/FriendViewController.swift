@@ -16,7 +16,6 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     var publicArray: NSMutableArray!
     var privateArray: NSMutableArray!
     var isOpen: Bool!
-    var selectedIndexPath: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +27,14 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             publicDict["icon"] = "111.jpg"
             publicDict["name"] = "学友哥"
             publicDict["photo"] = "Album7"
-            publicDict["firstComment"] = "尼玛：丑哭了丑哭了辣眼睛"
+            publicDict["firstComment"] = "尼玛：丑哭了丑哭了辣眼睛丑哭了丑哭了辣眼睛丑哭了丑哭了辣眼睛丑哭了丑哭了辣眼睛丑哭了丑哭了辣眼睛"
             publicDict["secondComment"] = "尼美：😒😒😒😒😒😒😒😒"
-            publicDict["thirdComment"] = "凤姐：我很欣赏你"
+            publicDict["thirdComment"] = "凤姐：我很欣赏你🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯"
             publicDict["isOpen"] = NSNumber(integer: 0)
             let friendsInfo = FriendsInfo(dict: publicDict)
-            publicArray.addObject(friendsInfo)
+            let friendsFrame = FriendsFrame()
+            friendsFrame.friendsInfo = friendsInfo
+            publicArray.addObject(friendsFrame)
         }
         
         var privateDict = [String:AnyObject]()
@@ -47,7 +48,9 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             privateDict["thirdComment"] = "凤姐：发手法而非发放"
             privateDict["isOpen"] = NSNumber(integer: 0)
             let friendsInfo = FriendsInfo(dict: privateDict)
-            privateArray.addObject(friendsInfo)
+            let friendsFrame = FriendsFrame()
+            friendsFrame.friendsInfo = friendsInfo
+            privateArray.addObject(friendsFrame)
         }
         
         dataArray = publicArray
@@ -84,11 +87,11 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         if cell == nil {
             cell = FriendTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuserID)
         }
-        let friendsInfo = dataArray[indexPath.row] as! FriendsInfo
+        let friendsFrame = dataArray[indexPath.row] as! FriendsFrame
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        cell?.friendsInfo = friendsInfo
+        cell?.friendsFrame = friendsFrame
         cell?.attentionCallback = {
-            print("guanzhu\(friendsInfo.name!)")
+            print("guanzhu\(friendsFrame.friendsInfo!.name!)")
         }
         cell?.shareCallback = { () -> Void in
             print("fenxiang\(indexPath.row)")
@@ -97,29 +100,21 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             print("jubao\(indexPath.row)")
         }
         cell?.commentCallback = {
-            if indexPath.row == self.selectedIndexPath?.row {
-                self.isOpen = !self.isOpen
-            }else if indexPath.row != self.selectedIndexPath?.row {
-                self.isOpen = true
-            }
-            if self.isOpen! {
-                friendsInfo.isOpen = NSNumber(integer: 1)
+            if friendsFrame.friendsInfo!.isOpen!.isEqualToNumber(NSNumber(int: 0)) {
+                friendsFrame.friendsInfo!.isOpen = NSNumber(integer: 1)
             }else {
-                friendsInfo.isOpen = NSNumber(integer: 0)
+                friendsFrame.friendsInfo!.isOpen = NSNumber(integer: 0)
             }
-            self.selectedIndexPath = indexPath
+            cell?.friendsFrame?.setFrame()
             tableView.reloadData()
-            tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
+//            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Top)
         }
         return cell!
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if isOpen! && selectedIndexPath?.row == indexPath.row {
-            return 450
-        }else {
-            return 300
-        }
+        let friendsFrame = dataArray[indexPath.row] as! FriendsFrame
+        return friendsFrame.cellHeight!
     }
     
     
@@ -130,11 +125,6 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     func segmentedControl(sender: UISegmentedControl) {
         NSNotificationCenter.defaultCenter().postNotificationName("hiddenRightView", object: nil)
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Top)
-        selectedIndexPath = nil
-        for i in 0..<dataArray.count {
-            let friendsInfo = dataArray[i] as! FriendsInfo
-            friendsInfo.isOpen = NSNumber(integer: 0)
-        }
         switch sender.selectedSegmentIndex {
         case 0:
             dataArray = publicArray

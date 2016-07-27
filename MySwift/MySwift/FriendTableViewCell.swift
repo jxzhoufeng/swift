@@ -18,7 +18,7 @@ class FriendTableViewCell: UITableViewCell {
     var commentButton: UIButton!
     var backView: UIView!
     var rightView: UIView?
-    var closeButton: UIButton?
+    private var closeButton: UIButton?
     
     private var commentView: UIView?
     private var commentLine: UIView?
@@ -32,14 +32,9 @@ class FriendTableViewCell: UITableViewCell {
     var shareCallback: (() -> Void)?
     var reportCallback: (() -> Void)?
     
-    var friendsInfo: FriendsInfo! {
+    var friendsFrame: FriendsFrame? {
         didSet {
-            self.iconImageView.image = UIImage(named: friendsInfo.icon!)
-            self.nameLabel.text = friendsInfo.name!
-            self.photoImageView.image = UIImage(named: friendsInfo.photo!)
-            self.commentLabel1?.text = friendsInfo.firstComment
-            self.commentLabel2?.text = friendsInfo.secondComment
-            self.commentLabel3?.text = friendsInfo.thirdComment
+           setupSubviewFrame()
         }
     }
     
@@ -89,7 +84,7 @@ class FriendTableViewCell: UITableViewCell {
         backView.addSubview(commentButton)
         
         commentView = UIView()
-        commentView?.backgroundColor = UIColor.clearColor()
+        commentView?.backgroundColor = UIColor.blackColor()
         backView.addSubview(commentView!)
         
         commentLine = UIView()
@@ -107,32 +102,31 @@ class FriendTableViewCell: UITableViewCell {
         commentView?.addSubview(moreComment!)
     }
     
-    override func layoutSubviews() {
-        backView.frame = CGRectMake(0, 0, self.contentView.width, self.contentView.height-5);
-        iconImageView.frame = CGRectMake(10, 5, 35, 35);
-        iconImageView.layer.cornerRadius = iconImageView.width/2;
-        nameLabel.frame = CGRectMake(iconImageView.right+10, 5, backView.width-iconImageView.right-10-50, iconImageView.height);
-        showRightView.frame = CGRectMake(backView.width-50, 0, 50, iconImageView.bottom+5);
-        photoImageView.frame = CGRectMake(0, iconImageView.bottom+5, backView.width, backView.width*0.59);
-        likeButton.frame = CGRectMake(10, photoImageView.bottom, 100, 30);
+    func setupSubviewFrame() {
+        backView.frame = (friendsFrame?.backViewFrame)!
+        iconImageView.frame = CGRectMake(10, 5, 35, 35)
+        iconImageView.layer.cornerRadius = iconImageView.width/2
+        nameLabel.frame = (friendsFrame?.nameLabelFrame)!
+        showRightView.frame = (friendsFrame?.showRightViewFrame)!
+        photoImageView.frame = (friendsFrame?.photoImageViewFrame)!
+        likeButton.frame = (friendsFrame?.likeButtonFrame)!
         likeButton.sizeToFit()
         likeButton.height = 30;
-        commentButton.frame = CGRectMake(backView.width-30-10, photoImageView.bottom, 30, 30);
-        if friendsInfo.isOpen!.isEqualToNumber(NSNumber(int: 1)) {
-            commentView?.frame = CGRectMake(0, commentButton.bottom, backView.width, backView.height-commentButton.bottom)
-            commentLine?.frame = CGRectMake(10, 0, commentView!.width-20, 1)
-            commentLabel1?.frame = CGRectMake(10, (commentLine?.bottom)!+10, commentLine!.width, 30)
-            commentLabel2?.frame = CGRectMake(10, (commentLabel1?.bottom)!, commentLine!.width, 30)
-            commentLabel3?.frame = CGRectMake(10, (commentLabel2?.bottom)!, commentLine!.width, 30)
-            moreComment?.frame = CGRectMake(10, (commentLabel3?.bottom)!+10, 100, 30)
-        }else {
-            commentView?.frame = CGRectZero
-            commentLine?.frame = CGRectZero
-            commentLabel1?.frame = CGRectZero
-            commentLabel2?.frame = CGRectZero
-            commentLabel3?.frame = CGRectZero
-            moreComment?.frame = CGRectZero
-        }
+        commentButton.frame = (friendsFrame?.commentButtonFrame)!
+        
+        commentView?.frame = (friendsFrame?.commentViewFrame)!
+        commentLine?.frame = (friendsFrame?.commentLineFrame)!
+        commentLabel1?.frame = (friendsFrame?.commentLabel1Frame)!
+        commentLabel2?.frame = (friendsFrame?.commentLabel2Frame)!
+        commentLabel3?.frame = (friendsFrame?.commentLabel3Frame)!
+        moreComment?.frame = (friendsFrame?.moreCommentFrame)!
+        
+        iconImageView.image = UIImage(named: friendsFrame!.friendsInfo!.icon!)
+        nameLabel.text = friendsFrame!.friendsInfo!.name!
+        photoImageView.image = UIImage(named: friendsFrame!.friendsInfo!.photo!)
+        commentLabel1?.text = friendsFrame!.friendsInfo!.firstComment!
+        commentLabel2?.text = friendsFrame!.friendsInfo!.secondComment!
+        commentLabel3?.text = friendsFrame!.friendsInfo!.thirdComment!
     }
     
     func showRightViewClick() {
@@ -225,16 +219,6 @@ class FriendTableViewCell: UITableViewCell {
     func hiddenRightView() {
         close()
     }
-    
-//    func openCell() {
-//        isOpen = true
-//        layoutSubviews()
-//    }
-//    
-//    func closeCell() {
-//        isOpen = false
-//        layoutSubviews()
-//    }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
