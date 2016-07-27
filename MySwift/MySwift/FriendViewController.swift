@@ -99,6 +99,16 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         cell?.reportCallback = {
             print("jubao\(indexPath.row)")
         }
+        cell?.moreCommentCallback = {
+            let commentVc = CommentViewController()
+            commentVc.hidesBottomBarWhenPushed = true
+            commentVc.commentArr = ["尼玛：丑哭了丑哭了辣眼睛丑哭了丑哭了辣眼睛丑哭了丑哭了辣眼睛丑哭了丑哭了辣眼睛丑哭了丑哭了辣眼睛辣眼睛",
+                                    "尼美：😒😒😒😒😒😒😒😒",
+                                    "凤姐：我很欣赏你🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯",
+                                    "小花：啦啦啦啦啦啦啦啦啦按设计搭建",
+                                    "小草：巨化股份多岁的v司法斯蒂芬阿斯蒂芬按时"]
+            self.navigationController?.pushViewController(commentVc, animated: true)
+        }
         cell?.commentCallback = {
             if friendsFrame.friendsInfo!.isOpen!.isEqualToNumber(NSNumber(int: 0)) {
                 friendsFrame.friendsInfo!.isOpen = NSNumber(integer: 1)

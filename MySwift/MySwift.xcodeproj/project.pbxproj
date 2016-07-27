@@ -35,6 +35,7 @@
 		E0B985191D38CEF400A9FA96 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B985181D38CEF400A9FA96 /* SecondTableViewCell.swift */; };
 		E0DB61771D45A9790035738E /* FriendsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DB61761D45A9790035738E /* FriendsInfo.swift */; };
 		E0DFF7101D41C26F001988B9 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */; };
+		E0F7FD851D489DB300F18CB6 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F7FD841D489DB300F18CB6 /* CommentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		E0DB61761D45A9790035738E /* FriendsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsInfo.swift; sourceTree = "<group>"; };
 		E0DFF70E1D41C26F001988B9 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		E0F7FD841D489DB300F18CB6 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				E04A3EC11D41FCCF00491325 /* FriendTableViewCell.swift */,
 				E0DB61761D45A9790035738E /* FriendsInfo.swift */,
 				E02143021D46FAA00098F2B9 /* FriendsFrame.swift */,
+				E0F7FD841D489DB300F18CB6 /* CommentViewController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				E08E70AF1D333FAB0027860D /* AppDelegate.swift in Sources */,
 				E04A3EC31D41FCCF00491325 /* FriendTableViewCell.swift in Sources */,
 				E0B985171D38BD7100A9FA96 /* GoodsDetailViewController.swift in Sources */,
+				E0F7FD851D489DB300F18CB6 /* CommentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

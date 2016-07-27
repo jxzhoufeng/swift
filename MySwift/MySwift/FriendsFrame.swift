@@ -54,6 +54,7 @@ class FriendsFrame: NSObject {
             commentLabel3Frame = CGRectMake(10, commentLabel2Frame!.maxY+10, commentLineFrame!.width, (commentLabel3Size?.height)!)
             moreCommentFrame = CGRectMake(10, commentLabel3Frame!.maxY+10, 100, 30)
             commentViewFrame = CGRectMake(0, commentButtonFrame!.maxY, screenWidth, moreCommentFrame!.maxY)
+            backViewFrame = CGRectMake(0, 0, screenWidth, commentViewFrame!.maxY)
             cellHeight = (commentViewFrame?.maxY)!+5
         }else {
             commentLineFrame = CGRectZero
@@ -62,6 +63,7 @@ class FriendsFrame: NSObject {
             commentLabel3Frame = CGRectZero
             moreCommentFrame = CGRectZero
             commentViewFrame = CGRectZero
+            backViewFrame = CGRectMake(0, 0, screenWidth, commentButtonFrame!.maxY)
             cellHeight = (backViewFrame?.maxY)!+5
         }
     }

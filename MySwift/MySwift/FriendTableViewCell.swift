@@ -31,6 +31,7 @@ class FriendTableViewCell: UITableViewCell {
     var attentionCallback: (() -> Void)?
     var shareCallback: (() -> Void)?
     var reportCallback: (() -> Void)?
+    var moreCommentCallback: (() -> Void)?
     
     var friendsFrame: FriendsFrame? {
         didSet {
@@ -84,7 +85,7 @@ class FriendTableViewCell: UITableViewCell {
         backView.addSubview(commentButton)
         
         commentView = UIView()
-        commentView?.backgroundColor = UIColor.blackColor()
+        commentView?.backgroundColor = UIColor.clearColor()
         backView.addSubview(commentView!)
         
         commentLine = UIView()
@@ -97,6 +98,7 @@ class FriendTableViewCell: UITableViewCell {
         
         moreComment = UIButton(type: UIButtonType.Custom)
         moreComment?.setTitle("查看全部评论", forState: UIControlState.Normal)
+        moreComment?.addTarget(self, action: #selector(FriendTableViewCell.moreCommentClick), forControlEvents: UIControlEvents.TouchUpInside)
         moreComment?.titleLabel?.font = UIFont.systemFontOfSize(nameFont)
         moreComment?.backgroundColor = UIColor.clearColor()
         commentView?.addSubview(moreComment!)
@@ -191,6 +193,12 @@ class FriendTableViewCell: UITableViewCell {
         label.textColor = UIColor.whiteColor()
         commentView?.addSubview(label)
         return label
+    }
+    
+    func moreCommentClick() {
+        if let callBack = moreCommentCallback {
+            callBack()
+        }
     }
     
     func commentButtonClick() {
