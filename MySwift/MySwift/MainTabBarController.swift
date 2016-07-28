@@ -13,14 +13,17 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        tabBar.barTintColor = UIColor(hexString: "06476d")
-        addChildViewControllers(HomeViewController(), title: "首页")
-        addChildViewControllers(FriendViewController(), title: "朋友");
-        addChildViewControllers(SecondViewController(), title: "圈子")
+//        tabBar.barTintColor = UIColor(hexString: "000000", alpha: 0.3)
+        addChildViewControllers(HomeViewController(), title: "首页", image: "Main")
+        addChildViewControllers(FriendViewController(), title: "朋友", image: "Star");
+        addChildViewControllers(SecondViewController(), title: "圈子", image: "Circle")
     }
     
-    func addChildViewControllers(childController: UIViewController, title: String) {
+    func addChildViewControllers(childController: UIViewController, title: String, image: String) {
         childController.title = title
+//        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.whiteColor()], forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.blackColor()], forState: UIControlState.Selected)
+        childController.tabBarItem.image = UIImage(named: image)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         let nav = MainNavigationController(rootViewController: childController)
         addChildViewController(nav)
     }

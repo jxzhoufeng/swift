@@ -35,6 +35,9 @@
 		E0B985191D38CEF400A9FA96 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B985181D38CEF400A9FA96 /* SecondTableViewCell.swift */; };
 		E0DB61771D45A9790035738E /* FriendsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DB61761D45A9790035738E /* FriendsInfo.swift */; };
 		E0DFF7101D41C26F001988B9 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */; };
+		E0EC2A421D49A72C009F21E0 /* CircleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC2A411D49A72C009F21E0 /* CircleDetailViewController.swift */; };
+		E0EC2A461D49DB89009F21E0 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC2A451D49DB89009F21E0 /* CircleTableViewCell.swift */; };
+		E0EC2A4A1D49EA71009F21E0 /* CircleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC2A491D49EA71009F21E0 /* CircleHeaderView.swift */; };
 		E0F7FD851D489DB300F18CB6 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F7FD841D489DB300F18CB6 /* CommentViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +99,9 @@
 		E0DB61761D45A9790035738E /* FriendsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsInfo.swift; sourceTree = "<group>"; };
 		E0DFF70E1D41C26F001988B9 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		E0DFF70F1D41C26F001988B9 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		E0EC2A411D49A72C009F21E0 /* CircleDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDetailViewController.swift; sourceTree = "<group>"; };
+		E0EC2A451D49DB89009F21E0 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
+		E0EC2A491D49EA71009F21E0 /* CircleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleHeaderView.swift; sourceTree = "<group>"; };
 		E0F7FD841D489DB300F18CB6 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +156,9 @@
 				E0DB61761D45A9790035738E /* FriendsInfo.swift */,
 				E02143021D46FAA00098F2B9 /* FriendsFrame.swift */,
 				E0F7FD841D489DB300F18CB6 /* CommentViewController.swift */,
+				E0EC2A411D49A72C009F21E0 /* CircleDetailViewController.swift */,
+				E0EC2A491D49EA71009F21E0 /* CircleHeaderView.swift */,
+				E0EC2A451D49DB89009F21E0 /* CircleTableViewCell.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -446,10 +455,13 @@
 				E0B984F41D387AA500A9FA96 /* MainNavigationController.swift in Sources */,
 				E08E70DF1D33473C0027860D /* TableViewCell.swift in Sources */,
 				E0DB61771D45A9790035738E /* FriendsInfo.swift in Sources */,
+				E0EC2A461D49DB89009F21E0 /* CircleTableViewCell.swift in Sources */,
 				E0B984F81D387E3B00A9FA96 /* BaseViewController.swift in Sources */,
 				E08E70E81D3362D30027860D /* UIColor+Hex.m in Sources */,
 				E04A3EC61D41FD3A00491325 /* FriendViewController.swift in Sources */,
+				E0EC2A421D49A72C009F21E0 /* CircleDetailViewController.swift in Sources */,
 				E0B984F21D387A7F00A9FA96 /* MainTabBarController.swift in Sources */,
+				E0EC2A4A1D49EA71009F21E0 /* CircleHeaderView.swift in Sources */,
 				E0B985191D38CEF400A9FA96 /* SecondTableViewCell.swift in Sources */,
 				E08E70B11D333FAB0027860D /* ViewController.swift in Sources */,
 				E0B985131D388D9E00A9FA96 /* HomeTableViewCell.swift in Sources */,

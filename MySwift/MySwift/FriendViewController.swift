@@ -119,6 +119,13 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             tableView.reloadData()
 //            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Top)
         }
+        cell?.iconImageCallback = {
+            let circleVc = CircleDetailViewController()
+            circleVc.hidesBottomBarWhenPushed = true
+            circleVc.title = friendsFrame.friendsInfo?.name
+            circleVc.iconString = friendsFrame.friendsInfo?.icon
+            self.navigationController?.pushViewController(circleVc, animated: true)
+        }
         return cell!
     }
     

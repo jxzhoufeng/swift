@@ -32,6 +32,7 @@ class FriendTableViewCell: UITableViewCell {
     var shareCallback: (() -> Void)?
     var reportCallback: (() -> Void)?
     var moreCommentCallback: (() -> Void)?
+    var iconImageCallback: (() -> Void)?
     
     var friendsFrame: FriendsFrame? {
         didSet {
@@ -55,11 +56,19 @@ class FriendTableViewCell: UITableViewCell {
         contentView.addSubview(backView)
         
         iconImageView = UIImageView()
+        iconImageView.userInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FriendTableViewCell.iconImageViewTap(_:)))
+        tapRecognizer.numberOfTapsRequired = 1
+        iconImageView.addGestureRecognizer(tapRecognizer)
         iconImageView.clipsToBounds = true
         backView.addSubview(iconImageView)
         
         nameLabel = UILabel()
+        nameLabel.userInteractionEnabled = true
         nameLabel.textColor = UIColor.whiteColor()
+        let tapRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(FriendTableViewCell.iconImageViewTap(_:)))
+        tapRecognizer1.numberOfTapsRequired = 1
+        nameLabel.addGestureRecognizer(tapRecognizer1)
         nameLabel.font = UIFont.systemFontOfSize(14)
         backView.addSubview(nameLabel)
         
@@ -203,6 +212,12 @@ class FriendTableViewCell: UITableViewCell {
     
     func commentButtonClick() {
         if let callBack = commentCallback {
+            callBack()
+        }
+    }
+    
+    func iconImageViewTap(sender: UITapGestureRecognizer) {
+        if let callBack = iconImageCallback {
             callBack()
         }
     }
