@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AMScrollingNavbar
 
 class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -16,6 +17,22 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     var publicArray: NSMutableArray!
     var privateArray: NSMutableArray!
     var isOpen: Bool!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(tableView, delay: 50.0)
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.stopFollowingScrollView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +134,7 @@ class FriendViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             }
             cell?.friendsFrame?.setFrame()
             tableView.reloadData()
-//            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Top)
+            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Top)
         }
         cell?.iconImageCallback = {
             let circleVc = CircleDetailViewController()

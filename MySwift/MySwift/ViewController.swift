@@ -17,6 +17,7 @@ class ViewController: BaseViewController,UITableViewDelegate,UITableViewDataSour
     var submit: UIButton!
     var infoArray: NSMutableArray!
     var priceNum: Float!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

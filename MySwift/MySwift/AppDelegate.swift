@@ -7,17 +7,25 @@
 //
 
 import UIKit
+import MMDrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var drawerController: MMDrawerController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = MainTabBarController()
+        let leftVc = LeftViewController();
+        let centerVc = MainTabBarController()
+        drawerController = MMDrawerController(centerViewController: centerVc, leftDrawerViewController: leftVc)
+        drawerController?.showsShadow = false;
+        drawerController?.openDrawerGestureModeMask = MMOpenDrawerGestureMode.All
+        drawerController?.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.All
+        drawerController?.maximumLeftDrawerWidth = screenWidth*0.7
+        window?.rootViewController = drawerController
         window?.makeKeyAndVisible()
         return true
     }

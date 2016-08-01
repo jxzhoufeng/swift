@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AMScrollingNavbar
 
-class MainNavigationController: UINavigationController {
+class MainNavigationController: ScrollingNavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

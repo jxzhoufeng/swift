@@ -13,6 +13,7 @@ class SecondViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     var tableView: UITableView!
     var statusFrameArray:[StatusFrame] = [StatusFrame]()
     var headerImageView: UIImageView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Plain)

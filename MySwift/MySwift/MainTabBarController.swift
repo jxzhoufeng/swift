@@ -9,11 +9,12 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 //        tabBar.barTintColor = UIColor(hexString: "000000", alpha: 0.3)
+        
         addChildViewControllers(HomeViewController(), title: "首页", image: "Main")
         addChildViewControllers(FriendViewController(), title: "朋友", image: "Star");
         addChildViewControllers(SecondViewController(), title: "圈子", image: "Circle")
