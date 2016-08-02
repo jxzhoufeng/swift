@@ -25,6 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         drawerController?.openDrawerGestureModeMask = MMOpenDrawerGestureMode.All
         drawerController?.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.All
         drawerController?.maximumLeftDrawerWidth = screenWidth*0.7
+        drawerController?.setDrawerVisualStateBlock { (drawerController, drawerSide, percentVisible) -> Void in
+            
+            var sideDrawerViewController:UIViewController?
+            if(drawerSide == MMDrawerSide.Left){
+                sideDrawerViewController = drawerController.leftDrawerViewController;
+            }
+            sideDrawerViewController?.view.alpha = percentVisible
+        }
         window?.rootViewController = drawerController
         window?.makeKeyAndVisible()
         return true

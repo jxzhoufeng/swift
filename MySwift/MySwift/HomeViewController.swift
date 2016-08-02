@@ -13,6 +13,17 @@ import SDWebImage
 class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate {
 
     var tableView: UITableView!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.enableOpenLeftDrawer(true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.enableOpenLeftDrawer(false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -38,12 +49,25 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
         rightBtn.titleLabel?.font = UIFont.systemFontOfSize(15)
         rightBtn.sizeToFit()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+        
+        let leftBtn = UIButton(type: .Custom)
+        leftBtn.setTitleColor(UIColor .orangeColor(), forState: UIControlState.Normal)
+        leftBtn.setTitle("侧边栏", forState: UIControlState.Normal)
+        leftBtn.addTarget(self, action: #selector(HomeViewController.leftBtnClick), forControlEvents: UIControlEvents.TouchUpInside)
+        leftBtn.titleLabel?.font = UIFont.systemFontOfSize(15)
+        leftBtn.sizeToFit()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
+
     }
     
     func rightBtnClick() {
         let vc = ViewController()
         vc.hidesBottomBarWhenPushed = true;
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func leftBtnClick() {
+        self.mm_drawerController.toggleDrawerSide(.Left, animated: true, completion: nil)
     }
     
     func setTableHeaderView() {
@@ -74,7 +98,7 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let goodsVc = GoodsDetailViewController()
         goodsVc.hidesBottomBarWhenPushed = true
-        goodsVc.urlString = "https://www.baidu.com/"
+        goodsVc.urlString = "http://www.cmeg2016.com/gameApp/index.html"
         navigationController?.pushViewController(goodsVc, animated: true)
     }
     

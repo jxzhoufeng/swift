@@ -15,15 +15,17 @@ class BaseViewController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         navigationController!.navigationBar.translucent = false;
     }
-//    
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//        if navigationController!.viewControllers.count > 1 {
-//            tabBarController!.tabBar.hidden = true;
-//        }else {
-//            tabBarController!.tabBar.hidden = false;
-//        }
-//    }
+    
+    func enableOpenLeftDrawer(enable: Bool) {
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if enable {
+            delegate.drawerController?.leftDrawerViewController = LeftViewController()
+        }else {
+            delegate.drawerController?.closeDrawerAnimated(true, completion: { (finish) in
+                delegate.drawerController!.leftDrawerViewController = nil
+            })
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

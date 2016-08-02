@@ -241,12 +241,12 @@
 		E0999F811D3C770F0022F7BB /* A */ = {
 			isa = PBXGroup;
 			children = (
+				E0B984EF1D38782F00A9FA96 /* HomeViewController.swift */,
+				E0B985121D388D9E00A9FA96 /* HomeTableViewCell.swift */,
 				E08E70B01D333FAB0027860D /* ViewController.swift */,
 				E08E70DE1D33473C0027860D /* TableViewCell.swift */,
 				E08E70E01D3347F40027860D /* TableviewCell.xib */,
 				E08E70E91D33757B0027860D /* GoodsInfo.swift */,
-				E0B984EF1D38782F00A9FA96 /* HomeViewController.swift */,
-				E0B985121D388D9E00A9FA96 /* HomeTableViewCell.swift */,
 				E0B985161D38BD7100A9FA96 /* GoodsDetailViewController.swift */,
 				E007E95E1D4F26C500CAF1E8 /* LeftViewController.swift */,
 				E007E9641D4F38A700CAF1E8 /* LeftViewTableViewCell.swift */,
