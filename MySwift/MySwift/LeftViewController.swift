@@ -58,7 +58,10 @@ class LeftViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let nav = self.mm_drawerController.centerViewController.childViewControllers[0] as! MainNavigationController
-        nav.pushViewController(FriendViewController(), animated: true)
+        let vc = LeftDetailViewController()
+        vc.title = listArray[indexPath.row]
+        vc.hidesBottomBarWhenPushed = true
+        nav.pushViewController(vc, animated: true)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
             self.mm_drawerController.closeDrawerAnimated(true, completion: nil)
         }

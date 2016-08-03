@@ -18,6 +18,10 @@ class MainTabBarController: UITabBarController {
         addChildViewControllers(HomeViewController(), title: "首页", image: "Main")
         addChildViewControllers(FriendViewController(), title: "朋友", image: "Star");
         addChildViewControllers(SecondViewController(), title: "圈子", image: "Circle")
+        
+        let sb = UIStoryboard(name: "IMfriendsViewController", bundle: nil)
+        let vc = sb.instantiateInitialViewController()
+        addChildViewControllers(vc!, title: "信息", image: "Main")
     }
     
     func addChildViewControllers(childController: UIViewController, title: String, image: String) {

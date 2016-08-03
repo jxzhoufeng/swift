@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fwe-o1-Y65">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Mfriends View Controller-->
+        <scene sceneID="oQe-hH-hmL">
+            <objects>
+                <viewController id="fwe-o1-Y65" customClass="IMfriendsViewController" customModule="MySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f6J-Fr-6QD"/>
+                        <viewControllerLayoutGuide type="bottom" id="P8I-TD-zka"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8qE-HQ-Lf8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D04-l1-vRm">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IMfriendCell" id="zMF-RZ-mVA" customClass="IMfriendsTableViewCell" customModule="MySwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zMF-RZ-mVA" id="Ahm-Ta-k7b">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3w4-OO-RoA">
+                                                    <rect key="frame" x="10" y="10" width="580" height="37"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3w4-OO-RoA" firstAttribute="top" secondItem="Ahm-Ta-k7b" secondAttribute="top" constant="10" id="PK0-A5-YtR"/>
+                                                <constraint firstItem="3w4-OO-RoA" firstAttribute="leading" secondItem="Ahm-Ta-k7b" secondAttribute="leading" constant="10" id="WZp-0i-Drn"/>
+                                                <constraint firstAttribute="bottom" secondItem="3w4-OO-RoA" secondAttribute="bottom" constant="10" id="cbl-k5-smr"/>
+                                                <constraint firstAttribute="trailing" secondItem="3w4-OO-RoA" secondAttribute="trailing" constant="10" id="lQl-xm-QeJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="3w4-OO-RoA" id="SNF-3k-yCZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fwe-o1-Y65" id="eDf-jD-zv2"/>
+                                    <outlet property="delegate" destination="fwe-o1-Y65" id="QB6-Xd-IT1"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D04-l1-vRm" firstAttribute="top" secondItem="8qE-HQ-Lf8" secondAttribute="top" id="2MV-Fx-oMW"/>
+                            <constraint firstItem="D04-l1-vRm" firstAttribute="leading" secondItem="8qE-HQ-Lf8" secondAttribute="leading" id="6ft-yO-NI9"/>
+                            <constraint firstItem="P8I-TD-zka" firstAttribute="top" secondItem="D04-l1-vRm" secondAttribute="bottom" id="NBG-MJ-VMJ"/>
+                            <constraint firstAttribute="trailing" secondItem="D04-l1-vRm" secondAttribute="trailing" id="tYy-4k-vms"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="D04-l1-vRm" id="c6e-s3-72o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pdM-K8-VAe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="229" y="383"/>
+        </scene>
+    </scenes>
+</document>
